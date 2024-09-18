@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Posts</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <section>
+        <a class="home_tag" href="/admin/adminHome"><i class="fa-solid fa-house"></i></a>
+
+        <div class="my_posts_page">
+            <div class="Postscontainer">
+
+                <h2>User Posts</h2>
+                <div class="posts_container">
+                    <% if (posts.length === 0) { %>
+                        <p>No posts available.</p>
+                        <a href="/blogs" class="btnStyle">Create Post</a>
+                    <% } else { %>
+                        <% posts.forEach(post => { %>
+                            <div class="post_card">
+                                <h3><%= post.title %></h3>
+                                <p><%= post.body %></p>
+                                <div class="post_actions">
+                                    <a href="/edit-userpost/<%= post._id %>" class="btnStyle">Edit</a>
+                                    <button class="btnStyle deleteButton" data-post-id="<%= post._id %>">Delete</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
